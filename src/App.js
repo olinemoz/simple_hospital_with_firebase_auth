@@ -1,29 +1,33 @@
-import React, {useState} from "react";
+import React from "react";
 import './App.css';
-import {Button} from "react-bootstrap";
-import initializeFirebaseAuthentication from "./Firebase/firebase.init";
-import {getAuth, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
-
-
-initializeFirebaseAuthentication()
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
+import Header from "./Components/Header/Header";
+import Home from "./Pages/Home/Home";
+import Services from "./Pages/Services/Services";
+import AboutUs from "./Pages/About_Us/AboutUs";
+import NotFound from "./Pages/NotFound/NotFound";
+import AuthProvider from "./context/AuthProvider";
+import Login from "./Pages/Login/Login";
 
 function App() {
-    const [user, setUser] = useState({})
-    const auth = getAuth();
-    const signInUsingGoogle = () => {
-        const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                console.log(result.user)
-                setUser(result.user)
-            })
-    }
 
     return (
-        <div>
-            <h1>Welcome All Care Hospital</h1>
-            <Button variant="secondary" onClick={signInUsingGoogle}>Google Sign In</Button>
-        </div>
+        <AuthProvider>
+            <Router>
+                <Header/>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/home" component={Home}>
+                        <Redirect to="/"/>
+                    </Route>
+                    <Route exact path="/services" component={Services}/>
+                    {/*<Route exact path="/service/:serviceId" component={Services}/>*/}
+                    <Route exact path="/about" component={AboutUs}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact component={NotFound}/>
+                </Switch>
+            </Router>
+        </AuthProvider>
     );
 }
 

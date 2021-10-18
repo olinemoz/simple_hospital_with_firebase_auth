@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Shah Muhammad Ali",
+    "image": "https://i.ibb.co/8KnSLvF/1.jpg",
+    "qualification": "MBBS, FCPS",
+    "specialist": "Anesthesiology Specialist",
+    "visit_fee": 500,
+    "short_description": "Dr. Shah Muhammad Ali graduated from Sir Salimullah Medical College & Mitford Hospital, under the University of Dhaka in 1982."
+  },
+  {
+    "id": 2,
+    "name": "Professor Dr. Md. Abdul Kalam",
+    "image": "https://i.ibb.co/6wnCRwH/2.jpg",
+    "qualification": "Professor & Head, Dept. Of Plastic & Reconstructive Surgery",
+    "specialist": "Plastic Surgeon",
+    "visit_fee": 1000,
+    "short_description": "PROF. MD. ABUL KALAM (MBBS, FCPS, MD) is a veteran consultant in the field of Surgery. He specializes in the field of Plastic  surgery. In the year 1983, by passing his MBBS from Dhaka medical college, Prof. Dr. Md. Abul Kalam emerged as a professional doctor. After the successful completion of MBBS, Prof. Dr. Abul Kalam completed his FCPS in 1997"
+  },
+  {
+    "id": 3,
+    "name": "Professor Dr. Abdullah-Al-Safi Majumder",
+    "image": "https://i.ibb.co/QCqcMfD/3.jpg",
+    "qualification": "MBBS, D. Card, MD(Card), FACC, FSGC",
+    "specialist": "Cardiology /Heart Specialist",
+    "visit_fee": "1200",
+    "short_description": "Professor Dr. Abdullah-Al-Safi Majumder works as a specialist in Cardiology Department (Hypertension, Blood Pressure, Heart, Cardio Vascular, etc) Also Research Fellow Ncvc(Japan).Who Fellow In Cardiology(USA)"
+  },
+  {
+    "id": 4,
+    "name": "Professor Dr. AKM Mosharraf Hossain",
+    "image": "https://i.ibb.co/BnSvXhc/4.jpg",
+    "qualification": "MBBS, FCPS, FCCP(USA)",
+    "specialist": "Professor, Respiratory Department",
+    "visit_fee": 800,
+    "short_description": "Working as Professor and Chairman, Dept of Respiratory Medicine, Bangabandhu Sheikh Mujib Medical University, Dhaka, Bangladesh.Trained in Sleep disorder clinic, National University Hospital, Singapore in 2003. From 2004, performing different activities including seminar, lecture, research work on sleep disorders in Bangladesh. He was involved in establishing the first sleep lab on 23rd June,2005 in Bangladesh."
+  },
+  {
+    "id": 5,
+    "name": "PROF. COLONEL  DR MD SHIRAJUL ISLAM KHAN",
+    "image": "https://i.ibb.co/bBxmzVw/5.jpg",
+    "qualification": "MBBS, DDV, MCPS, FCPS(Dermatology and Venereology)",
+    "specialist": "Dermatology and Venereology, Allergy, Cosmetic and Sexual Medicine.",
+    "visit_fee": 900,
+    "short_description": "He works as a specialist in Skin & Sex Department (Skin Problem , skin cancer, eczema, acne, psoriasis, nail infections, hair problem, etc)"
+  },
+  {
+    "id": 6,
+    "name": "Major General (Rtd.) Md. Ali Akbar",
+    "image": "https://i.ibb.co/xfkrdbn/6.jpg",
+    "qualification": "MBBS (Dhaka), FCPS (BD & Pak), FICS (USA)",
+    "specialist": "Professor and Head of Department of Urology",
+    "visit_fee": 1200,
+    "short_description": "Major General (Rtd.) Md. Ali Akbar works as a specialist in Kidney Diseases and Urology Department. He is top doctor in Bangladeesh."
+  }
+]
