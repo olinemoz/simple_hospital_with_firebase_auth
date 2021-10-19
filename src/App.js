@@ -8,9 +8,14 @@ import NotFound from "./Pages/NotFound/NotFound";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./Pages/Login/Login";
 import Consultants from "./Pages/Consultants/Consultants";
+import useConsultants from "./hooks/useConsultants";
+import ConsultantDetails from "./Pages/ConsultantDetails/ConsultantDetails";
+import Footer from "./Components/Footer/Footer";
+import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 
 function App() {
-
+    const [consultants] = useConsultants()
+    // console.log("consultants:",consultants)
     return (
         <AuthProvider>
             <Router>
@@ -20,12 +25,18 @@ function App() {
                     <Route exact path="/home" component={Home}>
                         <Redirect to="/"/>
                     </Route>
-                    <Route exact path="/consultants" component={Consultants}/>
-                    {/*<Route exact path="/service/:serviceId" component={Services}/>*/}
+                    <Route exact path="/consultants"
+                           render={() => <Consultants consultants={consultants}/>}/>
+
+                    <PrivateRoute exact path="/consultant/:consultantsId">
+                        <ConsultantDetails/>
+                    </PrivateRoute>
+
                     <Route exact path="/about" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact component={NotFound}/>
                 </Switch>
+                <Footer/>
             </Router>
         </AuthProvider>
     );

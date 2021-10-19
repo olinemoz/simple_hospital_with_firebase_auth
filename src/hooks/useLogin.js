@@ -20,6 +20,7 @@ const useLogin = () => {
     })
     const [isLogin, setIsLogin] = useState(false)
     const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
 
     // Destructuring getUser Properties
     const {name, email, password} = getUser
@@ -39,13 +40,17 @@ const useLogin = () => {
     }
 
     const signInUsingGoogle = () => {
+        setIsLoading(true)
         const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                setUser(result.user)
-            }).catch((error) => {
-            setError(error.message)
-        })
+        return signInWithPopup(auth, googleProvider)
+            //     .then((result) => {
+            //         setUser(result.user)
+            //     }).catch((error) => {
+            //     setError(error.message)
+            // })
+            .finally(() => {
+                setIsLoading(false)
+            })
     }
 
 
@@ -83,12 +88,6 @@ const useLogin = () => {
                 setError(error.message)
             })
     }
-    const logOut = () => {
-        signOut(auth).then(() => {
-        }).catch((error) => {
-            setError(error.message)
-        })
-    }
 
     const updateUserName = () => {
         updateProfile(auth.currentUser, {
@@ -98,6 +97,16 @@ const useLogin = () => {
             setError(error.message)
         })
     }
+    const logOut = () => {
+        setIsLoading(true)
+        signOut(auth).then(() => {
+        }).catch((error) => {
+            setError(error.message)
+        }).finally(() => {
+            setIsLoading(false)
+        })
+    }
+
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             if (user) {
@@ -105,6 +114,7 @@ const useLogin = () => {
             } else {
                 setUser({})
             }
+            setIsLoading(false)
         })
         return () => unsubscribed
     }, [auth])
@@ -117,11 +127,13 @@ const useLogin = () => {
         password,
         isLogin,
         toggleLogin,
+        setError,
         error,
+        getUser,
+        isLoading,
         handleInputChange,
         handleRegistration,
         createUserAccount,
-        userSignIn,
         signInUsingGoogle,
         logOut
     }

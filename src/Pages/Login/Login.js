@@ -2,9 +2,11 @@ import React from 'react';
 import initializeFirebaseAuthentication from "../../Firebase/firebase.init";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
+import {useHistory, useLocation} from "react-router-dom";
 
 initializeFirebaseAuthentication()
 const Login = () => {
+
     const {
         user,
         name,
@@ -15,11 +17,21 @@ const Login = () => {
         error,
         handleInputChange,
         handleRegistration,
-        signInUsingGoogle
+        signInUsingGoogle,
     } = useAuth();
 
+    const location = useLocation()
+    const history = useHistory()
+    const Redirect_URL = location.state?.from || '/consultants'
+    const handleGoogleLogin = () => {
+        signInUsingGoogle().then(result => {
+            history.push(Redirect_URL)
+        })
+    }
+
+
     return (
-        <div style={{marginTop: "75px"}}>
+        <div style={{marginTop: "75px"}} className="mb-2">
             <Row>
                 <Col xs={12} sm={12} md={6} lg={6} className="mx-auto shadow-lg p-4">
                     <h2 className="text-center text-primary">
@@ -75,10 +87,15 @@ const Login = () => {
                             />
                         </Form.Group>
                         <small className="text-danger my-2">{error}</small> <br/>
-                        <Button variant="primary" type="submit" className="mt-3">
-                            {isLogin ? "Login" : "Sign Up"}
-                        </Button>
-                        <Button variant="primary" type="submit" className="ms-3 mt-3" onClick={signInUsingGoogle}>
+                        {isLogin ? <Button variant="primary" type="submit"
+                                           className="mt-3">Login</Button> :
+                            <Button variant="primary" type="submit" className="mt-3">
+                                Register
+                            </Button>
+                        }
+
+                        <Button variant="primary" type="submit" className="ms-3 mt-3"
+                                onClick={handleGoogleLogin}>
                             Google Login
                         </Button>
                     </Form>
