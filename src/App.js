@@ -12,6 +12,10 @@ import useConsultants from "./hooks/useConsultants";
 import ConsultantDetails from "./Pages/ConsultantDetails/ConsultantDetails";
 import Footer from "./Components/Footer/Footer";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
+import MedicalTests from "./Pages/MedicalTest/MedicalTest";
+import TestDetails from "./Pages/TestDetails.js/TestDetails";
+import Pharmacy from "./Pages/Pharmacy/Pharmacy";
+import MedicineDetails from "./Pages/MedicineDetails/MedicineDetails";
 
 function App() {
     const [consultants] = useConsultants()
@@ -25,15 +29,26 @@ function App() {
                     <Route exact path="/home" component={Home}>
                         <Redirect to="/"/>
                     </Route>
+
                     <Route exact path="/consultants"
                            render={() => <Consultants consultants={consultants}/>}/>
-
                     <PrivateRoute exact path="/consultant/:consultantsId">
                         <ConsultantDetails/>
                     </PrivateRoute>
 
                     <Route exact path="/about" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
+
+                    <Route exact path="/medicaltests" component={MedicalTests}/>
+                    <PrivateRoute  exact path="/tests/:testId">
+                        <TestDetails/>
+                    </PrivateRoute>
+
+                    <Route exact path="/pharmacy" component={Pharmacy}/>
+                    <PrivateRoute exact path="/medicine/:medicineId">
+                        <MedicineDetails/>
+                    </PrivateRoute>
+
                     <Route exact component={NotFound}/>
                 </Switch>
                 <Footer/>
