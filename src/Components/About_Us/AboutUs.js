@@ -23,10 +23,10 @@ const AboutUs = () => {
             <Row>
                 {
                     aboutData.map(data => (
-                        <Col key={data.id} xs={12} sm={12} md={6} lg={4}>
-                           <div className="shadow-lg p-4 h-100 mx-3">
-                               <p>{data.content}</p>
-                           </div>
+                        <Col key={data.id} xs={12} sm={12} md={6} lg={4} className="mt-5 mt-sm-5 mt-md-4 mt-lg-3">
+                            <div className="shadow-lg p-4 h-100 mx-3">
+                                <p>{data.content}</p>
+                            </div>
                         </Col>
                     ))
                 }
