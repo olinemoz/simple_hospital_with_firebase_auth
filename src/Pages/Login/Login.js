@@ -1,34 +1,102 @@
-import React from 'react';
+import React, {useState} from 'react';
 import initializeFirebaseAuthentication from "../../Firebase/firebase.init";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
 import {useHistory, useLocation} from "react-router-dom";
+import {
+    createUserWithEmailAndPassword,
+    getAuth, signInWithEmailAndPassword,
+    updateProfile
+} from "firebase/auth";
 
 initializeFirebaseAuthentication()
 const Login = () => {
+    const [errors, setErrors] = useState("")
+    const [isLogin, setIsLogin] = useState(false)
+    const [createdUser, setCreatedUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+    })
+
+    const auth = getAuth();
 
     const {
         user,
-        name,
-        email,
-        password,
-        isLogin,
-        toggleLogin,
         error,
-        handleInputChange,
-        handleRegistration,
-        signInUsingGoogle,
+        signInUsingGoogle
     } = useAuth();
 
     const location = useLocation()
     const history = useHistory()
-    const Redirect_URL = location.state?.from || '/consultants'
+    const Redirect_URL = location.state?.from || '/home'
     const handleGoogleLogin = () => {
-        signInUsingGoogle().then(result => {
+        signInUsingGoogle().then((result) => {
+            console.log(result)
             history.push(Redirect_URL)
         })
     }
 
+    const handleInputChange = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        setCreatedUser({
+            ...createdUser,
+            [name]: value
+        })
+    }
+
+    const toggleLogin = event => {
+        setIsLogin(event.target.checked)
+    }
+
+
+    // Destructuring createdUser Properties
+    const {name, email, password} = createdUser
+    const handleRegistration = event => {
+        event.preventDefault();
+        console.log("HandleRegistration: ", name, email, password, isLogin)
+        if (isLogin) {
+            userSignIn(email, password)
+        } else {
+            createUserAccount(email, password)
+        }
+
+    }
+    const createUserAccount = (email, password) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                updateUserName()
+                console.log("created user account: ", user)
+                setErrors("")
+            })
+            .catch((error) => {
+                setErrors(error.message)
+            });
+    }
+
+    const userSignIn = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("signed in", user)
+                setErrors("")
+                history.push(Redirect_URL)
+            })
+            .catch((error) => {
+                setErrors(error.message)
+            })
+    }
+
+    const updateUserName = () => {
+        updateProfile(auth.currentUser, {
+            displayName: name
+        }).then(() => {
+        }).catch((error) => {
+            setErrors(error.message)
+        })
+    }
 
     return (
         <div style={{marginTop: "75px"}} className="mb-2">
@@ -86,7 +154,7 @@ const Login = () => {
                                 onChange={toggleLogin}
                             />
                         </Form.Group>
-                        <small className="text-danger my-2">{error}</small> <br/>
+                        <small className="text-danger my-2">{error || errors}</small> <br/>
                         {isLogin ? <Button variant="primary" type="submit"
                                            className="mt-3">Login</Button> :
                             <Button variant="primary" type="submit" className="mt-3">
@@ -94,7 +162,7 @@ const Login = () => {
                             </Button>
                         }
 
-                        <Button variant="primary" type="submit" className="ms-3 mt-3"
+                        <Button variant="primary" className="ms-3 mt-3"
                                 onClick={handleGoogleLogin}>
                             Google Login
                         </Button>
