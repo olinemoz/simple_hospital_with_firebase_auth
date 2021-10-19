@@ -13,7 +13,7 @@ const MedicineDetails = () => {
 
     console.log(medicine)
     return (
-        <div style={{marginTop: "75px"}}>
+        <div style={{margin: "100px 0px"}}>
             <div style={{marginTop: "75px"}}>
                 <Container>
                     <h2 className="text-primary text-center">Medicine Details</h2>

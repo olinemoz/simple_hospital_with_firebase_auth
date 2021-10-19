@@ -99,7 +99,7 @@ const Login = () => {
     }
 
     return (
-        <div style={{marginTop: "75px"}} className="mb-2">
+        <div  style={{marginTop: "100px"}} className="mb-2">
             <Row>
                 <Col xs={12} sm={12} md={6} lg={6} className="mx-auto shadow-lg p-4">
                     <h2 className="text-center text-primary">
@@ -169,6 +169,9 @@ const Login = () => {
                     </Form>
                 </Col>
             </Row>
+            <div style={{marginTop: "100px"}}>
+
+            </div>
         </div>
     );
 };

@@ -16,7 +16,7 @@ const ConsultantDetails = () => {
 
 
     return (
-        <div style={{marginTop: "75px"}}>
+        <div style={{margin: "100px 0px"}}>
             <Container>
                 <h2 className="text-primary text-center">Details of Consultant</h2>
                 <div className="mt-3  mx-auto p-5  mb-5 shadow-lg"

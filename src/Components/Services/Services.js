@@ -16,7 +16,7 @@ const Services = () => {
                         style={{height: "450px"}}
                     />
                     <Carousel.Caption>
-                        <h2 className="text-white">ICU Services</h2>
+                        <h2 className="text-white bg-success py-3">ICU Services</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -28,7 +28,7 @@ const Services = () => {
                     />
 
                     <Carousel.Caption>
-                        <h2 className="text-white">Emergency Services</h2>
+                        <h2 className="text-white bg-success py-3">Emergency Services</h2>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

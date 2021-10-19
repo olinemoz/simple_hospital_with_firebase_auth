@@ -10,7 +10,7 @@ const MedicalTests = () => {
             .then(data => setMedicalTests(data))
     },[])
     return (
-        <div style={{marginTop: "75px"}}>
+        <div style={{margin: "75px 0px"}}>
            <h2 className="text-center text-primary mb-3">Tests</h2>
             <Row>
                 {

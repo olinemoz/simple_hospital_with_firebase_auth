@@ -5,7 +5,7 @@ import Consultant from "../Consultant/Consultant";
 const Consultants = ({consultants}) => {
 
     return (
-        <div style={{marginTop: "100px"}}>
+        <div style={{margin: "100px 0px"}}>
             <h2 className="text-primary text-center">Our Consultants</h2>
             <Row>
                 {

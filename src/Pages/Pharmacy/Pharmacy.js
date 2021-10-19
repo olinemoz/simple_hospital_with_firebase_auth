@@ -10,7 +10,7 @@ const Pharmacy = () => {
             .then(data => setPharmacy(data))
     },[])
     return (
-        <div style={{marginTop: "75px"}}>
+        <div style={{margin: "75px 0px"}}>
             <Row>
                 {
                     pharmacy.map(medicine => {
