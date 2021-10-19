@@ -3,11 +3,11 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
-import Services from "./Pages/Services/Services";
 import AboutUs from "./Pages/About_Us/AboutUs";
 import NotFound from "./Pages/NotFound/NotFound";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./Pages/Login/Login";
+import Consultants from "./Pages/Consultants/Consultants";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
                     <Route exact path="/home" component={Home}>
                         <Redirect to="/"/>
                     </Route>
-                    <Route exact path="/services" component={Services}/>
+                    <Route exact path="/consultants" component={Consultants}/>
                     {/*<Route exact path="/service/:serviceId" component={Services}/>*/}
                     <Route exact path="/about" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>

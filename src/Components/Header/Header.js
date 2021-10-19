@@ -13,7 +13,7 @@ const Header = () => {
                 <Navbar.Collapse id="navbarScroll">
                     <Nav className="me-auto">
                         <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/services">Services</Nav.Link>
+                        <Nav.Link as={HashLink} to="/consultants">Consultants</Nav.Link>
                         <Nav.Link as={HashLink} to="/about">About Us</Nav.Link>
                     </Nav>
                     {user?.displayName ? <Button onClick={logOut} variant="light">Logout</Button>
